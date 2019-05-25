@@ -5,8 +5,9 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    current_page: 0,
+    current_page: 1,
     post_ready: false,
+    visited_page: [],
 
     // this var will be a 2d list
     // the first dimension will refer to the 'page'
@@ -15,14 +16,19 @@ export const store = new Vuex.Store({
     posts: [],
   },
   getters: {
-    get_page: state => {
-      return state.posts;
+    get_current_page: state => {
+      const page_index = state.current_page-1;
+      console.log(state.posts)
+      return state.posts[page_index];
     },
     get_status: state => {
       return state.post_ready;
     },
     get_index: state => {
       return state.current_page;
+    },
+    get_visited_page: state => {
+      return state.visited_page;
     }
   },
   mutations: {
@@ -30,5 +36,36 @@ export const store = new Vuex.Store({
       state.post_ready = true;
       state.posts.push(new_posts)
     },
+    increment_page_index: state => {
+      state.current_page++;
+    },
+    decrement_page_index: state => {
+      state.current_page--;
+    }
+  },
+  actions: {
+    get_page: (context) => {
+      // HANDLE IF PAGE VISITED ALREADY
+      const page_index = context.getters.get_index;
+
+      // if already visited
+      // if(!context.getters.get_visited_page.includes(page_index)){
+
+      // }
+      // state.visited_page.push(page_index)
+            
+      
+      let url = 'https://api.hnpwa.com/v0/news/'
+      url += page_index + '.json'
+
+      console.log('getting data from ' + url);
+
+      // instead of using this, you "reference" the
+      // vue-resource by calling Vue.http
+      Vue.http.get(url)
+        .then(response => {
+          context.commit('push_page', response.body);
+        })
+    }
   }
 });

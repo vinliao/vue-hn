@@ -6,17 +6,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'app',
   components: {
 
   },
+  methods: {
+    ...mapActions([
+      'get_page'
+    ])
+  },
   created(){
-    // get data from the unofficial HN backend
-    this.$http.get('https://api.hnpwa.com/v0/news/1.json')
-      .then(response => {
-        this.$store.commit('push_page', response.body);
-      })
+    this.get_page();
   }
 }
 </script>

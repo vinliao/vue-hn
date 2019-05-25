@@ -9,7 +9,8 @@
 
 <script>
   export default {
-    props: ['author', 'content']
+    // add other props here
+    props: ['author', 'content'],
     
   }
 </script>
