@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- maybe put a header here? -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
   components: {
-    HelloWorld
+
+  },
+  created(){
+    // get data from the unofficial HN backend
+    this.$http.get('https://api.hnpwa.com/v0/news/1.json')
+      .then(response => {
+        this.$store.commit('push_page', response.body);
+      })
   }
 }
 </script>
