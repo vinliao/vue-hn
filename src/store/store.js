@@ -31,7 +31,8 @@ export const store = new Vuex.Store({
       return state.visited_page;
     }
   },
-  mutations: { push_page: (state, new_posts) => {
+  mutations: {
+    push_page: (state, new_posts) => {
       state.post_ready = true;
       state.posts.push(new_posts)
     },
@@ -40,29 +41,24 @@ export const store = new Vuex.Store({
     },
     decrement_page_index: state => {
       state.current_page--;
-    },
-    push_visited_page: (state, page_index) => {
-      state.visited_page.push(page_index);
     }
   },
   actions: {
     get_page: (context) => {
       // HANDLE IF PAGE VISITED ALREADY
       const page_index = context.getters.get_index;
-       
-      // if already visited, then don't push the page
-      // into the posts array
-      if(context.getters.get_visited_page.includes(page_index)){
-        console.log('this is already visited!!!');
-        return;
-      }
 
-      // add the current page index to the page that has
-      // already been visited
-      context.commit('push_visited_page', page_index)
+      // if already visited
+      // if(!context.getters.get_visited_page.includes(page_index)){
+
+      // }
+      // state.visited_page.push(page_index)
+            
       
       let url = 'https://api.hnpwa.com/v0/news/'
       url += page_index + '.json'
+
+      console.log('getting data from ' + url);
 
       // instead of using this, you "reference" the
       // vue-resource by calling Vue.http
