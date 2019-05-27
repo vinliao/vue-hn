@@ -1,23 +1,18 @@
 <template>
   <div>
-    <p>Hey this is the comment component</p>
-    <router-link to="/">Home</router-link>
-    <p>ID: {{ id }}</p>
-    <p>title: {{ title }}</p>
-    <p>time posted: {{ time }}</p>
-    <p>author: {{ user }}</p>
-    <!-- <p>comments: {{ comments }}</p> -->
+    <!-- put the post of the author here -->
     <app-comment-card v-for="comment in this.comments"
       :key="comment.id"
       :author="comment.user"
       :content="comment.content"
+      :time_ago="comment.time_ago"
+      :level="comment.level"
       ></app-comment-card>
-
   </div> 
 </template>
 
 <script>
-import CommentCard from './CommentCard.vue';
+import CommentCard from './CommentCard';
 
   export default {
     // oh wow, this is cool
@@ -51,6 +46,7 @@ import CommentCard from './CommentCard.vue';
       set_comments(comments, comments_count, comments_graph=[]){
         // base case
         if(comments_graph.length === comments_count){
+          console.log(comments_graph)
           this.comments = comments_graph;
         }
 

@@ -1,8 +1,26 @@
 <template>
-  <div class="card-container">
-    <p>{{ author }}</p>
-    <p>{{ content }}</p>
-
+  <div>
+    <v-card flat class="pa-3" v-bind:style="{ marginLeft: left_indent }">
+      <v-layout row align-start>
+        <!-- medium size 8 with padding of 2 on x axis -->
+        <v-flex xs10 md8 offset-xs1 offset-md2>
+          <div class="caption grey--text text--darken-1">
+            <span>
+              {{ author }} 
+            </span>
+            <span>
+              {{ time_ago }}
+            </span>
+            <span>
+              {{ left_indent }}
+            </span>
+          </div>
+          <div>
+            <p>{{ content }}</p>
+          </div>
+        </v-flex>
+      </v-layout>
+    </v-card>
   </div>
   
 </template>
@@ -10,17 +28,22 @@
 <script>
   export default {
     // add other props here
-    props: ['author', 'content'],
-    
+    props: ['author', 'content', 'time_ago', 'level'],
+
+    data(){
+      return {
+        left_indent: this.level * 20 + 'px',
+      }
+    }
   }
 </script>
 
 <style scoped>
-.card-container {
-  box-shadow: 3px 3px 5px 5px #666;
-  width: 500px;
-  margin-bottom: 20px;
-  margin: auto;
-  padding: 20px 0 20px 0;
+.left-indent {
+  /* use calc() */
+  /* use var() */
+  margin-left: var(width-indent);
+  background-color: red
 }
+
 </style>

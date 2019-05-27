@@ -4,7 +4,6 @@
       <v-content>
         <app-header></app-header>
         <router-view></router-view>
-        <app-footer></app-footer>
       </v-content>
     </v-container>
   </v-app>
@@ -13,7 +12,6 @@
 <script>
 import { mapActions } from 'vuex'
 import Header from './components/Header'
-import Footer from './components/Footer'
 
 export default {
   name: 'App',
@@ -26,7 +24,6 @@ export default {
 
   components: {
     appHeader: Header,
-    appFooter: Footer,
   },
 
   methods: {

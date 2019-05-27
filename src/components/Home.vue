@@ -11,16 +11,19 @@
       :time_ago="post.time_ago"
       :url="post.url"
       ></app-post-card>
+      <app-footer></app-footer>
   </div> 
 </template>
 
 <script>
 import PostCard from './PostCard';
+import Footer from './Footer'
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 
   export default {
     components: {
       'appPostCard': PostCard,
+      'appFooter': Footer,
     },
     methods: {
       ...mapGetters([
