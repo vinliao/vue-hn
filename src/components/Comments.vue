@@ -39,8 +39,6 @@ import CommentCard from './CommentCard.vue';
     created(){
       this.$http.get('https://api.hnpwa.com/v0/item/' + this.id + '.json')
         .then(response => {
-          console.log('item json')
-          console.log(response.body);
           this.title = response.body.title;
           this.content = response.body.content;
           this.time = response.body.time_ago;
@@ -54,8 +52,6 @@ import CommentCard from './CommentCard.vue';
         // base case
         if(comments_graph.length === comments_count){
           this.comments = comments_graph;
-          console.log('the comments');
-          console.log(comments_graph);
         }
 
         for(let i=0; i<comments.length; i++){

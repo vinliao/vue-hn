@@ -1,36 +1,42 @@
 <template>
-  <div id="app">
-    <!-- maybe put a header here? -->
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <v-container>
+      <v-content>
+        <app-header></app-header>
+        <router-view></router-view>
+        <app-footer></app-footer>
+      </v-content>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export default {
-  name: 'app',
-  components: {
+  name: 'App',
 
+  data () {
+    return {
+      //
+    }
   },
+
+  components: {
+    appHeader: Header,
+    appFooter: Footer,
+  },
+
   methods: {
     ...mapActions([
       'get_page'
     ])
   },
+
   created(){
     this.get_page();
-  }
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

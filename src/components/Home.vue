@@ -1,11 +1,5 @@
 <template>
   <div>
-    <p>Hey this is the home</p>   
-    <router-link to="/comments">Comments</router-link>
-    <!-- <p>{{ posts }}</p> -->
-    <!-- use v-if here -->
-    <button @click="prev_page">go prev!</button>
-    <button @click="next_page">go next!</button>
     <app-post-card v-for="post in posts"
       :key="post.id"
       :title="post.title"
@@ -13,6 +7,9 @@
       :comments_count="post.comments_count"
       :points="post.points"
       :user="post.user"
+      :domain="post.domain"
+      :time_ago="post.time_ago"
+      :url="post.url"
       ></app-post-card>
   </div> 
 </template>
