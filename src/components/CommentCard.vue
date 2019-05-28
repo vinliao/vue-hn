@@ -1,18 +1,15 @@
 <template>
   <div>
-    <v-card flat class="pa-3" v-bind:style="{ marginLeft: left_indent }">
+    <v-card flat class="pa-3 left-border-color" v-bind:style="{ marginLeft: left_indent, marginRight: right_indent }">
       <v-layout row align-start>
         <!-- medium size 8 with padding of 2 on x axis -->
-        <v-flex xs10 md8 offset-xs1 offset-md2>
+        <v-flex xs12 md12>
           <div class="caption grey--text text--darken-1">
             <span>
               {{ author }} 
             </span>
             <span>
               {{ time_ago }}
-            </span>
-            <span>
-              {{ left_indent }}
             </span>
           </div>
           <div>
@@ -32,18 +29,18 @@
 
     data(){
       return {
-        left_indent: this.level * 20 + 'px',
+        base_margin: 50,
+        left_indent: this.level * 15 + 200 + 'px',
+        right_indent: '200px',
+
       }
     }
   }
 </script>
 
 <style scoped>
-.left-indent {
-  /* use calc() */
-  /* use var() */
-  margin-left: var(width-indent);
-  background-color: red
+.left-border-color {
+  border-left: 4px solid black;
 }
 
 </style>
