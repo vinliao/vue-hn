@@ -2,7 +2,9 @@
   <v-app>
     <v-container>
       <v-content>
-        <app-header></app-header>
+        <app-header
+          :current_page_to_1="current_page_to_1"
+          ></app-header>
         <router-view></router-view>
       </v-content>
     </v-container>
@@ -10,7 +12,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 import Header from './components/Header'
 
 export default {
@@ -18,7 +20,7 @@ export default {
 
   data () {
     return {
-      //
+
     }
   },
 
@@ -29,6 +31,9 @@ export default {
   methods: {
     ...mapActions([
       'get_page'
+    ]),
+    ...mapMutations([
+      'current_page_to_1'
     ])
   },
 

@@ -43,6 +43,9 @@ export const store = new Vuex.Store({
     },
     push_visited_page: (state, page_index) => {
       state.visited_page.push(page_index);
+    },
+    current_page_to_1: state => {
+      state.current_page = 1;
     }
   },
   actions: {

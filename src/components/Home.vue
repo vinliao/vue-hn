@@ -11,7 +11,10 @@
       :time_ago="post.time_ago"
       :url="post.url"
       ></app-post-card>
-      <app-footer></app-footer>
+      <app-footer
+      :next_page="next_page"
+      :prev_page="prev_page"
+      ></app-footer>
   </div> 
 </template>
 

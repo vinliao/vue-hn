@@ -1,10 +1,18 @@
 <template>
   <div>
-    <v-layout justify-center>
+    <v-layout row justify-center>
       <v-flex xs12 md8>
-        <v-card flat class="mx-1">
-          <!-- fill the shit here -->
-          asdf
+        <v-card flat class="pa-1">
+          <a>
+            <span @click="prev_page()">
+              Prev
+            </span>
+          </a>
+          <a>
+            <span @click="next_page()">
+              Next 
+            </span>
+          </a>
         </v-card>
       </v-flex>
     </v-layout>
@@ -13,6 +21,17 @@
 
 <script>
   export default {
-    
+    props: ['next_page', 'prev_page']
   }
 </script>
+
+<style scoped>
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
