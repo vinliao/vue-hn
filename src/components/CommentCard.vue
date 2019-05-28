@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <v-card flat class="pa-3 left-border-color" v-bind:style="{ marginLeft: left_indent, marginRight: right_indent }">
-      <v-layout row align-start>
-        <!-- medium size 8 with padding of 2 on x axis -->
-        <v-flex xs12 md12>
+  <!-- <div>
+    <v-card flat v-bind:style="this.card_style">
+      <v-layout row justify-center class="mx-3 py-2">
+        medium size 8 with padding of 2 on x axis
+        <v-flex>
           <div class="caption grey--text text--darken-1">
             <span>
               {{ author }} 
@@ -18,29 +18,85 @@
         </v-flex>
       </v-layout>
     </v-card>
+  </div> -->
+  <div>
+    <v-layout row justify-center>
+      <v-flex xs12 md8>
+        <v-card flat class="pa-3" v-bind:style="this.card_style">
+          <div class="caption grey--text text--darken-1">
+            <span>
+              {{ author }}
+            </span>
+            <span>
+              {{ time_ago }}
+            </span>
+          </div>
+          <div>
+            <p>{{ content }}</p>
+          </div>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </div>
-  
+
 </template>
 
 <script>
-  export default {
-    // add other props here
-    props: ['author', 'content', 'time_ago', 'level'],
+export default {
+  // add other props here
+  props: ["author", "content", "time_ago", "level"],
 
-    data(){
+  data() {
+    return {
+      // the color of the left border will be level_color[level]
+      // you know, maybe I can get the color through an API
+      // instead of manually choosing one by one
+      level_color: [
+        "red",
+        "blue",
+        "black",
+        "grey",
+        "darkkhaki",
+        "green",
+        "cyan",
+        "lime",
+        "aqua",
+        "magenta",
+        "pink"
+      ]
+    };
+  },
+  computed: {
+    // this dirty solution doesn't work on phone
+    // card_style(){
+    //   return {
+    //     marginLeft: 200 + this.level * 15 + 'px',
+    //     marginRight: '200px',
+
+    //     // set different color for different level
+    //     borderLeft: '4px solid ' + this.level_color[this.level],
+    //   },
+    // }
+    old_card_style() {
       return {
-        base_margin: 50,
-        left_indent: this.level * 15 + 200 + 'px',
-        right_indent: '200px',
+        marginLeft: 200 + this.level * 15 + "px",
+        marginRight: "200px",
 
-      }
+        // set different color for different level
+        borderLeft: "4px solid " + this.level_color[this.level]
+      };
+    },
+    card_style() {
+      return {
+        marginLeft: this.level * 15 + "px",
+
+        // set different color for different level
+        borderLeft: "4px solid " + this.level_color[this.level]
+      };
     }
   }
+};
 </script>
 
 <style scoped>
-.left-border-color {
-  border-left: 4px solid black;
-}
-
 </style>

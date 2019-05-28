@@ -1,8 +1,14 @@
 <template>
   <div>
-    <p>output some footer here bro</p>  
-    <p>maybe treat it as another card (just like your header)</p>
-  </div> 
+    <v-layout justify-center>
+      <v-flex xs12 md8>
+        <v-card flat class="mx-1">
+          <!-- fill the shit here -->
+          asdf
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>

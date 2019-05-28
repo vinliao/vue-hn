@@ -1,11 +1,9 @@
 <template>
   <div>
-    <v-card flat class="pa-3">
-      <v-layout row align-start>
-        <!-- medium size 8 with padding of 2 on x axis -->
-        <v-flex xs10 md8 offset-xs1 offset-md2>
+    <v-layout justify-center>
+      <v-flex xs12 md8>
+        <v-card flat class="py-2 px-1">
           <div>
-            <!-- <span @click="to_comment">{{ title }} </span>  -->
             <a @click="to_comment">
               <span class="font-weight-medium">
                 {{ title }} 
@@ -27,9 +25,9 @@
               </span>
             </a>
           </div>
-        </v-flex>
-      </v-layout>
-    </v-card>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
