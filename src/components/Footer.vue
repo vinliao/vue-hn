@@ -2,12 +2,13 @@
   <div>
     <v-layout row justify-center>
       <v-flex xs12 md8>
-        <v-card flat class="pa-1">
+        <v-card flat class="pa-2">
           <a>
             <span @click="prev_page()">
               Prev
             </span>
           </a>
+          <span>&nbsp;</span>
           <a>
             <span @click="next_page()">
               Next 
@@ -32,6 +33,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: #ff4000;
 }
 </style>

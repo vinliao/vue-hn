@@ -2,8 +2,8 @@
   <div>
     <v-layout row justify-center>
       <v-flex xs12 md8>
-        <v-card flat class="pa-3" v-bind:style="this.card_style">
-          <div class="caption grey--text text--darken-1">
+        <v-card flat class="px-3 py-3" v-bind:style="this.card_style">
+          <div class="caption grey--text">
             <span>
               {{ author }}
             </span>
@@ -12,7 +12,7 @@
             </span>
           </div>
           <div>
-            <p>{{ content }}</p>
+            {{ content }}
           </div>
         </v-card>
       </v-flex>
@@ -29,51 +29,32 @@ export default {
   data() {
     return {
       // the color of the left border will be level_color[level]
-      // you know, maybe I can get the color through an API
-      // instead of manually choosing one by one
-
-      // here's one idea: programmatically generate this list
       level_color: [
         "red",
         "blue",
-        "black",
-        "grey",
-        "darkkhaki",
+        "orange",
         "green",
-        "cyan",
+        "purple",
         "lime",
+        "navy",
         "aqua",
-        "magenta",
-        "pink"
+        "fuchsia",
+        "gray",
+        "olive",
+        "silver",
       ]
     };
   },
   computed: {
-    // this dirty solution doesn't work on phone
-    // card_style(){
-    //   return {
-    //     marginLeft: 200 + this.level * 15 + 'px',
-    //     marginRight: '200px',
-
-    //     // set different color for different level
-    //     borderLeft: '4px solid ' + this.level_color[this.level],
-    //   },
-    // }
-    old_card_style() {
-      return {
-        marginLeft: 200 + this.level * 15 + "px",
-        marginRight: "200px",
-
-        // set different color for different level
-        borderLeft: "4px solid " + this.level_color[this.level]
-      };
-    },
     card_style() {
       return {
         marginLeft: this.level * 15 + "px",
 
         // set different color for different level
-        borderLeft: "4px solid " + this.level_color[this.level]
+        borderLeft: "4px solid " + this.level_color[this.level],
+
+        // card divider
+        borderBottom: "1px solid #eee" 
       };
     }
   }

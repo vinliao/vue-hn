@@ -1,6 +1,12 @@
 <template>
   <div>
-    <!-- put the post of the author here -->
+    <app-post-detail-card
+      :key="this.id"
+      :content="this.content"
+      :user="this.user"
+      :title="this.title"
+      :time_ago="this.time_ago"
+      ></app-post-detail-card>
     <app-comment-card v-for="comment in this.comments"
       :key="comment.id"
       :author="comment.user"
@@ -13,6 +19,7 @@
 
 <script>
 import CommentCard from './CommentCard';
+import PostDetailCard from './PostDetailCard';
 
   export default {
     // oh wow, this is cool
@@ -23,20 +30,30 @@ import CommentCard from './CommentCard';
         id: this.$route.params.id,
         title: null,
         comments: null,
-        time: null,
+        time_ago: null,
         user: null,
         content: null,
       }
     },
     components: {
       'appCommentCard': CommentCard,
+      'appPostDetailCard': PostDetailCard,
     },
     created(){
       this.$http.get('https://api.hnpwa.com/v0/item/' + this.id + '.json')
         .then(response => {
           this.title = response.body.title;
-          this.content = response.body.content;
-          this.time = response.body.time_ago;
+
+          // this.content = response.body.content
+          if(response.body.content){
+            const parser = new DOMParser();
+            const dom = parser.parseFromString(
+                '<!doctype html><body>' + response.body.content,
+                'text/html');
+            this.content = dom.body.textContent;
+          }
+
+          this.time_ago = response.body.time_ago;
           this.user = response.body.user;
           this.set_comments(response.body.comments, response.body.comments_count);
         });
