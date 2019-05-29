@@ -1,24 +1,4 @@
 <template>
-  <!-- <div>
-    <v-card flat v-bind:style="this.card_style">
-      <v-layout row justify-center class="mx-3 py-2">
-        medium size 8 with padding of 2 on x axis
-        <v-flex>
-          <div class="caption grey--text text--darken-1">
-            <span>
-              {{ author }} 
-            </span>
-            <span>
-              {{ time_ago }}
-            </span>
-          </div>
-          <div>
-            <p>{{ content }}</p>
-          </div>
-        </v-flex>
-      </v-layout>
-    </v-card>
-  </div> -->
   <div>
     <v-layout row justify-center>
       <v-flex xs12 md8>
@@ -51,6 +31,8 @@ export default {
       // the color of the left border will be level_color[level]
       // you know, maybe I can get the color through an API
       // instead of manually choosing one by one
+
+      // here's one idea: programmatically generate this list
       level_color: [
         "red",
         "blue",

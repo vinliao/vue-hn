@@ -13,10 +13,10 @@
           </span> -->
           <!-- <v-icon>fas fa-y-combinator</v-icon> -->
           <!-- <v-icon>home</v-icon> -->
-          <v-icon @click="comment_to_home">fab fa-y-combinator</v-icon>
+          <v-icon @click="comment_to_home" color="#ff4000">fab fa-y-combinator</v-icon>
           <span>&nbsp;</span>
           <a @click="comment_to_home">
-            <span>Hacker News</span>
+            <span class="font-weight-bold">Hacker News</span>
           </a>
           <!-- <span> | </span>
           <a @click="to_new">
